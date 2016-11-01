@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'editor.apps.EditorConfig',
+    'project_management.apps.ProjectManagementConfig',
+    'homepage.apps.HomepageConfig',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',

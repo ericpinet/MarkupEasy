@@ -1,8 +1,10 @@
 {# Load the tag library #}
 {% load bootstrap3 %}
 
-<script type="text/javascript" src="{{ STATIC_URL }}/static/jquery-3.1.1.js">
-</script>
+<script type="text/javascript" src="{{ STATIC_URL }}/static/js/jquery-3.1.1.js"></script>
+
+<link href="{{ STATIC_URL }}/static/project_management/css/project.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
@@ -21,26 +23,27 @@
   </div>
 </nav>
 
-<div id="user-widget" class="list-group">
+<div id="project-widget" class="list-group">
   <div class="list-group-item heading">
-     <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/ademilter/128.jpg">
+     <img class="media-object img-circle" src="{{ STATIC_URL }}/static/images/services/GitHub-Mark-64px.png">
      <div class="text-wrap">
-        <h4 class="list-group-item-heading">Richard Willams</h4>
-        <p class="list-group-item-text">15,421 followers</p>
+        <h4 class="list-group-item-heading">ConnectLife</h4>
+        <p class="list-group-item-text">21 page(s)</p>
+        <p class="list-group-item-text">Markdown</p>
      </div>
      <div class="clearfix"></div>
   </div>
   <a href="#" class="list-group-item">
      <i class="fa fa-user fa-lg pull-right"></i>
-     <p class="list-group-item-text">Edit user</p>
+     <p class="list-group-item-text">Open</p>
   </a>
   <a href="#" class="list-group-item">
      <i class="fa fa-bar-chart-o fa-lg pull-right"></i>
-     <p class="list-group-item-text">Web statistics</p>
+     <p class="list-group-item-text">Export</p>
   </a>
   <a href="#" class="list-group-item">
      <i class="fa fa-wrench fa-lg pull-right"></i>
-     <p class="list-group-item-text">Upload settings</p>
+     <p class="list-group-item-text">Delete</p>
   </a>
   <a href="#" class="list-group-item">
      <i class="fa fa-calendar fa-lg pull-right"></i>
