@@ -1,8 +1,9 @@
 {# Load the tag library #}
 {% load bootstrap3 %}
 
-<script type="text/javascript" src="{{ STATIC_URL }}/static/js/jquery-3.1.1.js">
-</script>
+<script type="text/javascript" src="{{ STATIC_URL }}/static/js/jquery-3.1.1.js"></script>
+<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}/static/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}/static/css/homepage.css' />
 
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
@@ -11,12 +12,215 @@
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <a class="navbar-brand" href="#">{{ title }}</a>
-      </a>
+<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="#">Markup-Easy</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li>
+                        <a href="#features">Features</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Header -->
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                     <div class="intro-message">
+                        <h1>Markup-Easy</h1>
+                        <h3>Online markup language editor</h3>
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="#" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Sign up with Github</span></a>
+                            </li>
+                        </ul>
+                     </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="intro-login">
+                        <form accept-charset="UTF-8" action="/join" autocomplete="off" class="home-hero-signup js-signup-form" data-form-nonce="5d38d11c5c19702cc2299a9112438a878fa6dea2" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="HhJPURztIzUyJ5izxS6rIvRLw+wUf4QfokYWFuJs4Xcg7xRNYfrWxFYHzSTx+edttyLFYWOR1Ka5IkGFD+qOGQ=="></div>              <dl class="form">
+                            <dd>
+                              <label class="form-label text-shadow-light sr-only" for="user[login]">Pick a username</label>
+                              <input type="text" name="user[login]" id="user[login]" class="form-control form-control-lg input-block" placeholder="Pick a username" data-autocheck-url="/signup_check/username" autofocus="">
+                            </dd>
+                          </dl>
+                          <dl class="form">
+                            <dd>
+                              <label class="form-label text-shadow-light sr-only" for="user[email]">Enter your email address</label>
+                              <input type="text" name="user[email]" id="user[email]" class="form-control form-control-lg input-block js-email-notice-trigger" placeholder="Your email address" data-autocheck-url="/signup_check/email" data-com.agilebits.onepassword.user-edited="yes">
+                            </dd>
+                          </dl>
+                          <dl class="form">
+                            <dd>
+                              <label class="form-label text-shadow-light sr-only" for="user[password]">Create a password</label>
+                              <input type="password" name="user[password]" id="user[password]" class="form-control form-control-lg input-block is-autocheck-loading is-autocheck-successful" placeholder="Create a password" data-autocheck-url="/signup_check/password" data-com.agilebits.onepassword.user-edited="yes">
+                            </dd>
+                            <p class="form-control-note text-center">Use at least one letter, one numeral, and seven characters.</p>
+                          </dl>
+                          <center><a href="#" class="btn btn-default btn-lg btn-block"><i class="fa fa-user-plus fa-fw"></i> <span class="network-name">Sign up for Markup-Easy</span></a></center>
+                          <p class="form-control-note text-center">
+                            By clicking "Sign up for Markup-Easy", you agree to our
+                            <a class="text-white" href="#" target="_blank">terms of service</a> and
+                            <a class="text-white" href="#" target="_blank">privacy policy</a>. <span class="js-email-notice">We'll occasionally send you account related emails.</span>
+                          </p>
+                        </form>
+                        <p>
+                            <br>
+                        <a href="#" class="btn btn-default btn-lg btn-block"><i class="fa fa-github fa-fw"></i> <span class="network-name">Sign up with Github</span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.container -->
+
     </div>
-  </div>
-</nav>
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+
+	<a  name="features"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Online Editor</h2>
+                    <p class="lead">Markup Easy give you a easy way to edit online your markup language, see preview with image and link, deploy on your github or export.
+                    <a target="_blank" href="#"><br>Read more</a>
+                    </p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="static/images/ipad.png" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">3D Device Mockups<br>by PSDCovers</h2>
+                    <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to download some of their awesome, free photoshop actions!</p>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <img class="img-responsive" src="static/images/dog.png" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+    <div class="content-section-a">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Google Web Fonts and<br>Font Awesome Icons</h2>
+                    <p class="lead">This template features the 'Lato' font, part of the <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="static/images/phones.png" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+	<a  name="contact"></a>
+    <div class="banner">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Connect to start:</h2>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.banner -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#services">Services</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; Eric Pinet 2016. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
