@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'editor.apps.EditorConfig',
     'project_management.apps.ProjectManagementConfig',
     'homepage.apps.HomepageConfig',
+    'font_awesome',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
