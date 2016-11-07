@@ -6,6 +6,7 @@ django-bootstrap3==7.1.0
 django-font-awesome==4.6.1
 djangorestframework==3.5.2
 django-filter==0.15.3
+django-gravatar2==1.4.0
 markdown==2.6.7
 macholib==1.5.1
 matplotlib==1.3.1

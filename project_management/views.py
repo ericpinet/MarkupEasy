@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/sign_in')
 def projects_dashboard(request):
-    template = loader.get_template('project_management/index.html')
+    template = loader.get_template('project_management/projects_dashboard.html')
     context = {
     }
     return HttpResponse(template.render(context, request))

@@ -18,6 +18,9 @@ def index(request):
     :param request: Client http request
     :return: Main page
     """
+    if request.user.is_authenticated:
+        return redirect('%s' % settings.LOGGED_URL)
+
     template = loader.get_template('homepage/index.html')
     context = {
     }

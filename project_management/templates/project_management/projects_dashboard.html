@@ -1,0 +1,41 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+
+{% load gravatar %}
+
+<br><br><br>
+<br><br><br>
+<div class="container">
+    <div class="row content">
+
+        <div class="col-sm-3 sidenav">
+
+            <img alt="" class="rounded-2" height="233" size="233" src="{% gravatar_url user.email 233 %}" width="233">
+            <a target="_blank" href="http://www.gravatar.com/"><small>Change your avatar</small></a>
+
+            <h3>{{ request.user.get_full_name }}</h3><br>
+            <h4>{{ request.user.username }}</h4>
+
+            <center><button type="submit" class="btn btn-default btn-block" id="btn-signup">Edit profile</button></center>
+
+            <hr>
+            <i class="fa fa-clock-o" aria-hidden="true"></i> Last visit {{ request.user.last_login }} <br>
+            <i class="fa fa-calendar" aria-hidden="true"></i> Joined on {{ request.user.date_joined }}
+        </div>
+
+        <div class="col-sm-9">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#">Projects</a></li>
+                <li role="presentation"><a href="#">Activity</a></li>
+                <li role="presentation"><a href="#">Messages</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<br>
+<br>
+
+
+{% endblock content %}
