@@ -1,24 +1,7 @@
-{# Load the tag library #}
-{% load bootstrap3 %}
+{% extends 'homepage/base.html' %}
 
-<script type="text/javascript" src="{{ STATIC_URL }}/static/js/jquery-3.1.1.js"></script>
+{% block content %}
 
-<link href="{{ STATIC_URL }}/static/project_management/css/project.css" rel="stylesheet">
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+Project
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <a class="navbar-brand" href="#">{{ title }}</a>
-      </a>
-    </div>
-  </div>
-</nav>
+{% endblock content %}

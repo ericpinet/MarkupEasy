@@ -92,3 +92,6 @@ django-env/
 
 
 db.sqlite3
+
+.idea/workspace.xml
+
