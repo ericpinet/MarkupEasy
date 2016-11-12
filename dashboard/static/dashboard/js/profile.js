@@ -39,9 +39,9 @@ $('#perso-form').on('submit', function(event) {
 // AJAX for posting
 function create_post() {
     $.ajax({
-        url : "save_personal_information", // the endpoint
-        type : "POST", // http method
-        data : {   first_name: $('#first-name').val(),
+        url : "/api/users/"+$('#user-id').val()+"/", // the endpoint
+        type : "PUT", // http method
+        data : {    first_name: $('#first-name').val(),
                     last_name: $('#last-name').val(),
                     email: $('#email').val()
                }, // data sent with the post request
@@ -49,30 +49,21 @@ function create_post() {
         // handle a successful response
         success : function(json) {
 
-            console.log(json); // log the returned json to the console
-            console.log("success"); // another sanity check
+            $('#perso-results').html('<div class="alert alert-success" id="alert-success"><small>Save successful!</small></div>');
+            $("#alert-success").fadeTo(2000, 500).slideUp(500, function(){
+                $("#alert-success").slideUp(500);
+            });
 
-            if (json['result'] == '200') {
-                $('#perso-results').html('<div class="alert alert-success" id="alert-success"><small>' + json['msg'] + '</small></div>');
-                $("#alert-success").fadeTo(2000, 500).slideUp(500, function(){
-                    $("#alert-success").slideUp(500);
-                });
-            }
-            else {
-                $('#perso-results').html('<div class="alert alert-danger" id="alert-danger"><small>Error: ' + json['msg'] + '</small></div>');
-                $("#alert-danger").fadeTo(2000, 500).slideUp(500, function(){
-                    $("#alert-danger").slideUp(500);
-                });
-            }
         },
 
         // handle a non-successful response
         error : function(xhr,errmsg,err) {
-            $('#perso-results').html('<div class="alert alert-danger" id="alert-danger"><small>Error: ' + xhr.status + '. Save data failed!</small></div>');
 
+            $('#perso-results').html('<div class="alert alert-danger" id="alert-danger"><small>Error: ' + xhr.status + '. Save data failed!</small></div>');
             $("#alert-danger").fadeTo(2000, 500).slideUp(500, function(){
                 $("#alert-danger").slideUp(500);
             });
+
         }
     });
 };

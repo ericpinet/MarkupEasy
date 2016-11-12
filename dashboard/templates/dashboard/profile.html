@@ -5,6 +5,8 @@
 
     {% csrf_token %}
 
+    <input type="hidden" class="form-control" id="user-id" value="{{ request.user.id }}">
+
     <div class="form-group">
         <label for="first-name" class="col-sm-2 control-label">First name</label>
         <div class="col-sm-10">

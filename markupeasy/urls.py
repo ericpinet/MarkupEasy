@@ -15,19 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from rest_framework.routers import DefaultRouter
-from dashboard.views import ProjectViewSet
-
-
-project_router = DefaultRouter()
-project_router.register(r'projects', ProjectViewSet, base_name='projects')
 
 urlpatterns = [
     url(r'^', include('homepage.urls')),
     url(r'^editor/', include('editor.urls')),
     url(r'^dashboard/', include('dashboard.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/', include('api.urls')),
+    url(r'^api-django/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
-urlpatterns += project_router.urls
+

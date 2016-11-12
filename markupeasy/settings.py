@@ -31,9 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'api.apps.ApiConfig',
     'editor.apps.EditorConfig',
     'dashboard.apps.DashboardConfig',
     'homepage.apps.HomepageConfig',
+
     'font_awesome',
     'bootstrap3',
     'rest_framework',
@@ -112,8 +114,7 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
 
