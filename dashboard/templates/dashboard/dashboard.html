@@ -18,8 +18,6 @@
 
             <center><a target="_blank" href="http://www.gravatar.com/"><button type="submit" class="btn btn-default btn-block"><i class="fa fa-picture-o" aria-hidden="true"></i> Change your avatar</button></center></a>
 
-            <center><a target="_blank" href="http://www.gravatar.com/"><button type="submit" class="btn btn-default btn-block"><i class="fa fa-picture-o" aria-hidden="true"></i> Change your avatar</button></center></a>
-
             <hr>
 
             <i class="fa fa-clock-o" aria-hidden="true"></i> Last visit {{ request.user.last_login }} <br>
@@ -37,7 +35,8 @@
 
                 <div class="tab-content clearfix">
                     <div class="tab-pane" id="profile">
-                        {% include 'project_management/profile.html' %}
+                        <br>
+                        {% include 'dashboard/profile.html' %}
                     </div>
                     <div class="tab-pane active" id="projects">
                         <h3>project</h3>

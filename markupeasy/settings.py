@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'editor.apps.EditorConfig',
-    'project_management.apps.ProjectManagementConfig',
+    'dashboard.apps.DashboardConfig',
     'homepage.apps.HomepageConfig',
     'font_awesome',
     'bootstrap3',
@@ -112,7 +112,8 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.AllowAny',
     ]
 }
 
@@ -138,4 +139,4 @@ STATIC_URL = '/static/'
 
 # Logged home page
 
-LOGGED_URL = '/projects/'
+LOGGED_URL = '/dashboard/'
