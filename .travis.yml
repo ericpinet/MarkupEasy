@@ -10,11 +10,6 @@ install:
 # command to run tests
 script:
 
-    # setup virtualenv
-    - virtualenv django-env
-    - source django-env/bin/active
-    - pip install -r requirements.txt
-
     # prepare django
     - python manage.py migrate
 
