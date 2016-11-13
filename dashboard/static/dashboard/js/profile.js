@@ -2,11 +2,11 @@
 // Submit post on submit
 $('#perso-form').on('submit', function(event) {
     event.preventDefault();
-    create_post();
+    save_personal_information();
 });
 
 // AJAX for posting
-function create_post() {
+function save_personal_information() {
     $.ajax({
         url : "/api/users/"+$('#user-id').val()+"/", // the endpoint
         type : "PUT", // http method
