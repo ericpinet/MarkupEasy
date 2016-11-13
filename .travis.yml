@@ -1,0 +1,17 @@
+language: python
+
+python:
+  - "2.7"
+
+# command to install dependencies
+install:
+    # notting
+
+# command to run tests
+script:
+
+    # prepare django
+    - python manage.py migrate
+
+after_success:
+    # notting

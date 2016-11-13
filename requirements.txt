@@ -12,4 +12,4 @@ py2app==0.7.3
 pyOpenSSL==0.13.1
 pyparsing==2.0.1
 python-dateutil==1.5
-pytz==2016.
+pytz==2016.7
