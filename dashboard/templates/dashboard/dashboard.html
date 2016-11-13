@@ -13,18 +13,31 @@
 
             <img alt="" class="rounded-2" height="233" size="233" src="{% gravatar_url user.email 233 %}" width="233">
 
-            <h4>{{ request.user.get_full_name }}</h4>
-            <h5>{{ request.user.username }}</h5>
+            <table>
+                <tr>
+                    <td class="lead">
+                        {{ request.user.get_full_name }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lead-small">
+                        {{ request.user.username }}
+                    </td>
+                </tr>
+            </table>
 
-            <center><a target="_blank" href="http://www.gravatar.com/"><button type="submit" class="btn btn-default btn-block"><i class="fa fa-picture-o" aria-hidden="true"></i> Change your avatar</button></center></a>
             <br>
-            <center><a target="_self" href="#"><button type="submit" class="btn btn-default btn-block"><i class="fa fa-envelope-o" aria-hidden="true"></i> Change email</button></center></a>
+
+            <center><button id="btn-change-picture" type="" class="btn btn-default btn-block"><i class="fa fa-picture-o" aria-hidden="true"></i> Change your picture</button></center>
+            <br>
+            <center><button id="btn-change-email" type="" class="btn btn-default btn-block"><i class="fa fa-envelope-o" aria-hidden="true"></i> Change email</button></center>
+
 
 
             <hr>
 
-            <i class="fa fa-clock-o" aria-hidden="true"></i> Last visit {{ request.user.last_login }} <br>
-            <i class="fa fa-calendar" aria-hidden="true"></i> Joined on {{ request.user.date_joined }}
+            <p class="lead-small"><i class="fa fa-clock-o" aria-hidden="true"></i> Last visit {{ request.user.last_login }}</p>
+            <p class="lead-small"><i class="fa fa-calendar" aria-hidden="true"></i> Joined on {{ request.user.date_joined }}</p>
 
         </div>
 
@@ -42,7 +55,8 @@
                         {% include 'dashboard/profile.html' %}
                     </div>
                     <div class="tab-pane active" id="projects">
-                        <h3>project</h3>
+                        <br>
+                        {% include projects_page %}
                     </div>
                     <div class="tab-pane" id="activity">
                         <h3>activity</h3>
@@ -56,5 +70,7 @@
 </div>
 <br>
 <br>
+
+<script type="text/javascript" src="{{ STATIC_URL }}/static/dashboard/js/dashboard.js"></script>
 
 {% endblock content %}

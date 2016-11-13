@@ -1,0 +1,30 @@
+
+<h4 class="lead"><i class="fa fa-user" aria-hidden="true"></i>  Add project</h4>
+
+<form id="project-form" class="form-horizontal" accept-charset="UTF-8" action="#projects" autocomplete="off" method="post">
+
+    {% csrf_token %}
+
+    <input type="hidden" class="form-control" id="user-id" value="{{ request.user.id }}">
+
+    <div class="form-group">
+        <label for="project-name" class="col-sm-2 control-label lead-small">Project name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control lead-small" id="project-name" placeholder="Project name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Add</button>
+            <button id="btn-cancel-add" type="" class="btn btn-default">Cancel</button>
+            <br><br>
+            <div id="project-results"></div>
+        </div>
+    </div>
+
+    <hr>
+
+</form>
+
+<script type="text/javascript" src="{{ STATIC_URL }}/static/dashboard/js/projects.js"></script>

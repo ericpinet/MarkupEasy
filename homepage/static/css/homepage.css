@@ -25,6 +25,16 @@ h6 {
     font-weight: 400;
 }
 
+.lead-small {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.lead-medium {
+    font-size: 16px;
+    font-weight: 300;
+}
+
 .form-control-note {
     font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 11px;
