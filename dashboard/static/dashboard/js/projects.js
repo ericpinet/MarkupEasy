@@ -19,7 +19,7 @@ $('#btn-cancel-add').on('click', function(event) {
 // Submit post on submit
 $('#project-form').on('submit', function(event) {
     event.preventDefault();
-    create_post();
+    save_project();
 });
 
 // Delete project
@@ -31,7 +31,7 @@ $('.btn-delete').on('click', function(e){
     $('#confirm-delete').modal({ backdrop: 'static', keyboard: false })
         .one('click', '#btn-confirm-delete', function() {
 
-            delete_post($row.attr('id'));
+            delete_project($row.attr('id'));
 
             $row.addClass("danger");
             $row.fadeOut(150, function(){
@@ -49,7 +49,7 @@ $('.btn-delete').on('click', function(e){
 */
 
 // AJAX for posting
-function create_post() {
+function save_project() {
     $.ajax({
         url : "/api/projects/", // the endpoint
         type : "POST", // http method
@@ -77,7 +77,7 @@ function create_post() {
 };
 
 // AJAX for posting
-function delete_post( project_id ) {
+function delete_project( project_id ) {
     $.ajax({
         url : "/api/projects/"+project_id+"/", // the endpoint
         type : "DELETE", // http method
