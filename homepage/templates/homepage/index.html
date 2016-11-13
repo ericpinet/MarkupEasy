@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% load static %}
+
 <!-- Header -->
 <a name="about"></a>
 <div class="intro-header">
@@ -161,7 +163,7 @@
                 </p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive" src="static/images/markdown-logo.png" alt="" style="width: 200; height: 200">
+                <img class="img-responsive" src="{% static 'images/markdown-logo.png' %}" alt="" style="width: 200; height: 200">
             </div>
         </div>
 
@@ -181,7 +183,7 @@
                 <p class="lead">Synchronize your wiki project with your git repository on <a target="_blank" href="http://www.github.com/">GitHub</a> or create a simple web site quickly.</p>
             </div>
             <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                <img class="img-responsive" src="static/images/git-logo.png" alt="" style="width: 500; height: 200">
+                <img class="img-responsive" src="{% static 'images/git-logo.png' %}" alt="" style="width: 500; height: 200">
             </div>
         </div>
 
@@ -200,7 +202,7 @@
                 <p class="lead">Dynamic preview of your project with links and images simulation. Quickly add images in your project with simple drag and drop.</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive" src="static/images/preview.png" alt="">
+                <img class="img-responsive" src="{% static 'images/preview.png' %}" alt="">
             </div>
         </div>
     </div>
