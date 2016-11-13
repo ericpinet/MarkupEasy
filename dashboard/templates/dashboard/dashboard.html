@@ -1,0 +1,76 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+
+{% load gravatar %}
+
+<br><br><br>
+<br><br><br>
+<div class="container">
+    <div class="row content">
+
+        <div class="col-sm-3 sidenav">
+
+            <img alt="" class="rounded-2" height="233" size="233" src="{% gravatar_url user.email 233 %}" width="233">
+
+            <table>
+                <tr>
+                    <td class="lead">
+                        {{ request.user.get_full_name }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lead-small">
+                        {{ request.user.username }}
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+
+            <center><button id="btn-change-picture" type="" class="btn btn-default btn-block"><i class="fa fa-picture-o" aria-hidden="true"></i> Change your picture</button></center>
+            <br>
+            <center><button id="btn-change-email" type="" class="btn btn-default btn-block"><i class="fa fa-envelope-o" aria-hidden="true"></i> Change email</button></center>
+
+
+
+            <hr>
+
+            <p class="lead-small"><i class="fa fa-clock-o" aria-hidden="true"></i> Last visit {{ request.user.last_login }}</p>
+            <p class="lead-small"><i class="fa fa-calendar" aria-hidden="true"></i> Joined on {{ request.user.date_joined }}</p>
+
+        </div>
+
+            <div class="col-sm-9">
+                <ul class="nav nav-tabs">
+                    <li role="presentation"><a href="#profile" data-toggle="tab">Profile</a></li>
+                    <li role="presentation" class="active"><a href="#projects" data-toggle="tab">Projects</a></li>
+                    <li role="presentation"><a href="#activity" data-toggle="tab">Activity</a></li>
+                    <li role="presentation"><a href="#message" data-toggle="tab">Messages</a></li>
+                </ul>
+
+                <div class="tab-content clearfix">
+                    <div class="tab-pane" id="profile">
+                        <br>
+                        {% include 'dashboard/profile.html' %}
+                    </div>
+                    <div class="tab-pane active" id="projects">
+                        <br>
+                        {% include projects_page %}
+                    </div>
+                    <div class="tab-pane" id="activity">
+                        <h3>activity</h3>
+                    </div>
+                    <div class="tab-pane" id="message">
+                        <h3>message</h3>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<script type="text/javascript" src="{{ STATIC_URL }}/static/dashboard/js/dashboard.js"></script>
+
+{% endblock content %}

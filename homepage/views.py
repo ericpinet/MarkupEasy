@@ -15,9 +15,13 @@ def index(request):
     """
     Main page
 
+    :type request: Request
     :param request: Client http request
     :return: Main page
     """
+    if request.user.is_authenticated:
+        return redirect('%s' % settings.LOGGED_URL)
+
     template = loader.get_template('homepage/index.html')
     context = {
     }
@@ -39,7 +43,7 @@ def join(request):
 
     # check for the creation of the new account
     if request.POST:
-        username = email = password = ''
+
         username = request.POST['user_login']
         email = request.POST['user_email']
         password = request.POST['user_password']
@@ -96,11 +100,10 @@ def sign_in(request):
     username_error = None
     password_error = None
     login_error = None
-    user = None
 
     # check login
     if request.POST:
-        username = password = ''
+
         username = request.POST['user_login']
         password = request.POST['user_password']
 
