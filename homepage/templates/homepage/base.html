@@ -29,7 +29,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand topnav" href="/"><i class="fa fa-code fa-lg" aria-hidden="true"></i> Markup-Easy</a>
+            <a class="navbar-brand topnav" href="/?home_page=True"><i class="fa fa-code fa-lg" aria-hidden="true"></i> Markup-Easy</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -51,6 +51,18 @@
                     {% endif %}
 
                 {% else %}
+
+                    {% if request.GET.home_page == 'True' %}
+                
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li>
+                            <a href="#features">Features</a>
+                        </li>
+
+                    {% endif %}
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <img alt="" class="rounded-2" height="20" size="20" src="{% gravatar_url user.email 20 %}" width="20"> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
