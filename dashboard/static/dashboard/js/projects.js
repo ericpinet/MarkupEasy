@@ -13,7 +13,7 @@ $('#btn-add').on('click', function(event) {
 // Cancel add
 $('#btn-cancel-add').on('click', function(event) {
     event.preventDefault();
-    window.location.href = "?projects_page=";
+    window.location.href = "?projects_page=cancel";
 });
 
 // Submit post on submit
@@ -42,12 +42,6 @@ $('.btn-delete').on('click', function(e){
 
 });
 
-// Delete project
-/*$(".btn-delete").on("click", function(){
-
-});
-*/
-
 // AJAX for posting
 function save_project() {
     $.ajax({
@@ -61,7 +55,7 @@ function save_project() {
         // handle a successful response
         success : function(json) {
 
-            window.location.href = "?projects_page=";
+            window.location.href = "?projects_page=completed";
         },
 
         // handle a non-successful response
@@ -87,7 +81,7 @@ function delete_project( project_id ) {
         // handle a successful response
         success : function(json) {
 
-            window.location.href = "?projects_page=";
+            window.location.href = "?projects_page=deleted";
         },
 
         // handle a non-successful response
@@ -103,5 +97,6 @@ function delete_project( project_id ) {
 };
 
 function get_date() {
+    // TODO: Adding now date
     return '2016-11-11 11:11'
 }

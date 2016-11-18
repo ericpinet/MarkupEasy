@@ -19,7 +19,5 @@ $('#btn-change-picture').on('click', function(event) {
 // On change email
 
 $('#btn-change-email').on('click', function(event) {
-
     alert('Not implemented yet!');
-
 });

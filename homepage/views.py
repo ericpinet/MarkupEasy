@@ -4,6 +4,8 @@ from django.template import loader
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
+
+from dashboard.views import get_param
 from markupeasy import settings
 
 
@@ -19,8 +21,11 @@ def index(request):
     :param request: Client http request
     :return: Main page
     """
-    if request.user.is_authenticated:
-        return redirect('%s' % settings.LOGGED_URL)
+    home_page = get_param(request, 'home_page')
+
+    if home_page != 'True':
+        if request.user.is_authenticated:
+            return redirect('%s' % settings.LOGGED_URL)
 
     template = loader.get_template('homepage/index.html')
     context = {
