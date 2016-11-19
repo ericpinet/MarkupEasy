@@ -138,6 +138,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = "/var/www/markup-easy/static/"
+
 # Logged home page
 
 LOGGED_URL = '/dashboard/'
