@@ -12,11 +12,10 @@
         {% for project in projects %}
             <tr id="{{ project.id }}">
                 <td>
-                    <a href="#" id="btn-open-{{ project.id }}" class="lead" data-toggle="tooltip" data-placement="right" title="Open project"><i class="fa fa-book" aria-hidden="true"></i> {{ project.name }}</a>
+                    <a href="/editor/{{ project.id }}/" id="btn-open-{{ project.id }}" class="lead" data-toggle="tooltip" data-placement="right" title="Open project"><i class="fa fa-book" aria-hidden="true"></i> {{ project.name }}</a>
 
                     <div class="lead-small">Created: {{ project.creation_date }}</div>
-                    <div class="lead-small">File quantity: 20</div>
-                    <div class="lead-small">Type: GitHub wiki</div>
+                    <div class="lead-small">File quantity: {{ project.file_set.count }}</div>
 
                 </td>
 

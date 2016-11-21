@@ -139,11 +139,6 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = "/var/www/markup-easy/static/"
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    '/var/www/markup-easy/static/',
-]
-
 
 # Logged home page
 

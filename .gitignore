@@ -79,8 +79,6 @@ celerybeat-schedule
 .env
 
 # virtualenv
-venv/
-ENV/
 django-env/
 
 # Spyder project settings
@@ -89,7 +87,10 @@ django-env/
 # Rope project settings
 .ropeproject
 
-db.sqlite3
-
 .idea/workspace.xml
 
+# data directory
+data/
+
+# database
+db.sqlite3

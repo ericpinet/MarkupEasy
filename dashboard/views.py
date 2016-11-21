@@ -13,10 +13,11 @@ def dashboard(request):
     :param request: Client HTTP request
     :return: Page of the project management for the user connected
     """
-
+    # get project list
     projects = Project.objects.filter(user=request.user)
-    projects_page = get_param(request, 'projects_page')
 
+    # location
+    projects_page = get_param(request, 'projects_page')
     if projects_page == 'add':
         projects_page = "dashboard/projects_add.html"
     elif projects.count() == 0:
@@ -24,6 +25,7 @@ def dashboard(request):
     else:
         projects_page = "dashboard/projects_list.html"
 
+    # load template with context
     template = loader.get_template('dashboard/dashboard.html')
     context = {
         'projects': projects,
