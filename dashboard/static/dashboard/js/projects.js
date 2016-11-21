@@ -48,7 +48,6 @@ function save_project() {
         url : "/api/projects/", // the endpoint
         type : "POST", // http method
         data : {    name: $('#project-name').val(),
-                    creation_date: get_date(),
                     user: '/api/users/'+$('#user-id').val()+'/'
                }, // data sent with the post request
 
@@ -95,8 +94,3 @@ function delete_project( project_id ) {
         }
     });
 };
-
-function get_date() {
-    // TODO: Adding now date
-    return '2016-11-11 11:11'
-}
