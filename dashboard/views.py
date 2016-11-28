@@ -3,6 +3,7 @@ from django.template import loader
 from django.contrib.auth.decorators import login_required
 
 from api.models import Project
+from api.models import File
 
 
 @login_required(login_url='/sign_in')
@@ -30,6 +31,31 @@ def dashboard(request):
     context = {
         'projects': projects,
         'projects_page': projects_page
+    }
+    return HttpResponse(template.render(context, request))
+
+
+@login_required(login_url='/sign_in')
+def project_details(request, project_id):
+    """
+    Project details page
+
+    :param request: Client HTTP request
+    :param project_id: Project Id
+    :return: Page of the project details
+    """
+    # get project and files
+    project = Project.objects.get(pk=project_id)
+    files = File.objects.filter(project_id=project.id)
+
+    project_page = "dashboard/projects_details.html"
+
+    # load template with context
+    template = loader.get_template('dashboard/dashboard.html')
+    context = {
+        'project': project,
+        'projects_page': project_page,
+        'files': files
     }
     return HttpResponse(template.render(context, request))
 

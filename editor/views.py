@@ -46,10 +46,9 @@ def project(request, project_id, file_id=None):
         open_file.open(mode='rb')
         data = open_file.read()
         open_file.close()
-    else:
-        data = ""
 
     loaded_template = loader.get_template('editor/editor.html')
+
     context = {
         'no_footer': True,
         'editor_project': editor_project,

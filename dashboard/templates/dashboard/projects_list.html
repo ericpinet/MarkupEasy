@@ -1,9 +1,14 @@
 
+
+<!-- Panel project list -->
+
 <div class="panel panel-default">
 
     <div class="panel-heading">
+        <div class="btn-group pull-right">
+            <button id="btn-add" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="right" title="Add"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </div>
         Projects
-        <button id="btn-add" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Add"><i class="fa fa-plus" aria-hidden="true"></i></button>
     </div>
 
     <div class="panel-body">
@@ -12,7 +17,7 @@
         {% for project in projects %}
             <tr id="{{ project.id }}">
                 <td>
-                    <a href="/editor/{{ project.id }}/" id="btn-open-{{ project.id }}" class="lead" data-toggle="tooltip" data-placement="right" title="Open project"><i class="fa fa-book" aria-hidden="true"></i> {{ project.name }}</a>
+                    <a href="/dashboard/{{ project.id }}/" id="btn-open-{{ project.id }}" class="lead" data-toggle="tooltip" data-placement="right" title="Open project"><i class="fa fa-book" aria-hidden="true"></i> {{ project.name }}</a>
 
                     <div class="lead-small">Created: {{ project.creation_date }}</div>
                     <div class="lead-small">File quantity: {{ project.file_set.count }}</div>
@@ -22,7 +27,7 @@
                 <td class="btn-delete">
                     <div align="right">
                         <br>
-                        <button class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Delete"><i class="fa fa-trash fa-lg" aria-hidden="true" ></i></button>
+                        <button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="Delete"><i class="fa fa-trash fa-lg" aria-hidden="true" ></i></button>
                     </div>
                 </td>
 
@@ -32,6 +37,9 @@
 
     </div>
 </div>
+
+
+<!-- Modal confirm delete project -->
 
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
