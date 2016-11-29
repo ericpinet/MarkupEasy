@@ -10,12 +10,6 @@ $('#btn-add').on('click', function(event) {
     window.location.href = "?projects_page=add";
 });
 
-// Close project
-$('#btn-close').on('click', function(event) {
-    event.preventDefault();
-    window.location.href = "/dashboard/";
-});
-
 // Cancel add
 $('#btn-cancel-add').on('click', function(event) {
     event.preventDefault();
@@ -31,7 +25,7 @@ $('#project-form').on('submit', function(event) {
 // Delete project
 $('.btn-delete').on('click', function(e){
 
-    var $row = $(this).parent('tr');
+    var $row = $(this).parent('td');
     var $td = $(this);
 
     $('#confirm-delete').modal({ backdrop: 'static', keyboard: false })
@@ -45,7 +39,6 @@ $('.btn-delete').on('click', function(e){
             });
 
         });
-
 });
 
 // AJAX for posting

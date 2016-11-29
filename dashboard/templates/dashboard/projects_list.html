@@ -12,12 +12,11 @@
     </div>
 
     <div class="panel-body">
-
         <table id="project-table" class="table">
         {% for project in projects %}
             <tr id="{{ project.id }}">
                 <td>
-                    <a href="/dashboard/{{ project.id }}/" id="btn-open-{{ project.id }}" class="lead" data-toggle="tooltip" data-placement="right" title="Open project"><i class="fa fa-book" aria-hidden="true"></i> {{ project.name }}</a>
+                    <a href="/dashboard/{{ project.id }}/" id="btn-open-{{ project.id }}" class="lead-small" data-toggle="tooltip" data-placement="right" title="Open project"><i class="fa fa-book" aria-hidden="true"></i> {{ project.name }}</a>
 
                     <div class="lead-small">Created: {{ project.creation_date }}</div>
                     <div class="lead-small">File quantity: {{ project.file_set.count }}</div>
@@ -34,8 +33,10 @@
             </tr>
         {% endfor %}
         </table>
-
     </div>
+
+    <div class="panel-footer"><div align="right">{{ projects.count }} project(s)</div></div>
+
 </div>
 
 

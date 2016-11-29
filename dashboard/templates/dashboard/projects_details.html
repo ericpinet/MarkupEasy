@@ -13,23 +13,35 @@
     <div class="panel-body">
 
         <table class="table table-hover table-condensed lead-small">
-            <tr>
-                <th style="width: 65%">
-                    File
-                </th>
-                <th>
-                    Size
-                </th>
-                <th>
-                    Modified
-                </th>
-                <th>
-                    Actions
-                </th>
-            </tr>
+            <thead>
+                <tr>
+                    <th style="width: 65%">
+                        File
+                    </th>
+                    <th>
+                        Size
+                    </th>
+                    <th>
+                        Modified
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+
+            <tfoot>
+                <tr>
+                    <td>{{ files.count }} file(s)</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+
 
             {% for file in files %}
-            <tr>
+            <tr id="{{ file.id }}">
                 <td>
                     <a href="/editor/{{ project.id }}/{{ file.id }}" target="_blank">{{ file.name }}</a>
                 </td>
@@ -40,17 +52,71 @@
                     N/A
                 </td>
                 <td>
-                    <a href=""><i class="fa fa-folder-open-o" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    <a href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    <a href="/editor/{{ project.id }}/{{ file.id }}" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <a class="btn-delete" href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
             {% endfor %}
 
         </table>
 
+        <div id="file_result"></div>
+
+    </div>
+
+    <div class="panel-footer">
+
+        <button id="btn-add-file" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="right" title="Add a new file"><i class="fa fa-plus" aria-hidden="true"></i> Add File</button>
+        <button id="btn-import-file" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="right" title="Import file"><i class="fa fa-download" aria-hidden="true"></i> Import File</button>
+
+    </div>
+
+</div>
+
+<!-- Modal confirm delete file -->
+
+<div class="modal fade" id="confirm-delete-file" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-danger">
+                Delete
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this file?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok" data-dismiss="modal" id="btn-confirm-delete-file">Delete</a>
+            </div>
+        </div>
     </div>
 </div>
 
-<script type="text/javascript" src="{{ STATIC_URL }}/static/dashboard/js/projects.js"></script>
+<!-- Modal upload file -->
+
+<div class="modal fade" id="upload-file" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-success">
+                Import file
+            </div>
+
+            <form class="addItem" role="form" method="POST" enctype="multipart/form-data" action="add_item.php">
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="file" name="image" class="form-control" placeholder="Upload image...">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-success btn-ok" data-dismiss="modal" id="btn-upload-file">Upload</a>
+            </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript" src="{{ STATIC_URL }}/static/dashboard/js/projects-details.js"></script>
