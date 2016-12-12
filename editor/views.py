@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.template import loader
 from django.contrib.auth.decorators import login_required
-from api.models import Project, File
+from django.core.files.storage import File
+from api.models import Project, ProjectFile
 from django import template
 
 register = template.Library()
@@ -24,26 +25,21 @@ def index(request):
 
 
 @login_required(login_url='/sign_in')
-def project(request, project_id, file_id=None):
+def project(request, project_id, file=None):
     """
     Open project
 
     :param request:
     :param project_id:
-    :param file_id:
+    :param file:
     :return:
     """
     # get project
     editor_project = Project.objects.get(pk=project_id)
-    editor_file = None
-    editor_files = File.objects.filter(project=editor_project)
+    editor_file = ProjectFile(file, editor_project.get_file_system_storage().location)
 
-    if file_id:
-        editor_file = File.objects.get(pk=file_id)
-
-    if editor_file is not None:
-        open_file = editor_file.file
-        open_file.open(mode='rb')
+    if file is not None:
+        open_file = open(editor_file.path + '/' + editor_file.name, mode='rb')
         data = open_file.read()
         open_file.close()
 
@@ -53,7 +49,7 @@ def project(request, project_id, file_id=None):
         'no_footer': True,
         'editor_project': editor_project,
         'editor_file': editor_file,
-        'editor_files': editor_files,
+    #    'editor_files': editor_files,
         'editor_data': data,
     }
     return HttpResponse(loaded_template.render(context, request))

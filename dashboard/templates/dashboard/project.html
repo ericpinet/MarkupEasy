@@ -1,0 +1,42 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+
+{% load gravatar %}
+
+<br><br><br>
+<br>
+<div class="container lead">
+    <i class="fa fa-book" aria-hidden="true"></i>&nbsp;
+    <a href="{{ user_url }}">{{ username }}</a>
+    &nbsp;/&nbsp;
+    <a href="{{ user_url }}/{{ project.id }}"><strong>{{ project.name }}</strong></a>
+</div>
+
+<div class="container lead-small">
+    <ul class="nav nav-tabs">
+        <li role="presentation"class="active"><a href="#files" data-toggle="tab"><i class="fa fa-file-code-o" aria-hidden="true"></i>&nbsp; Files</a></li>
+        <li role="presentation"><a href="#activity" data-toggle="tab"><i class="fa fa-history" aria-hidden="true"></i>&nbsp; Activity</a></li>
+        <li role="presentation"><a href="#settings" data-toggle="tab"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp; Settings</a></li>
+    </ul>
+
+    <div class="tab-content clearfix">
+        <div class="tab-pane active" id="files">
+            <br>
+            {% include 'dashboard/project_files.html' %}
+        </div>
+        <div class="tab-pane" id="activity">
+            <h3>activity</h3>
+        </div>
+        <div class="tab-pane" id="settings">
+            <h3>settings</h3>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<script type="text/javascript" src="{{ STATIC_URL }}/static/dashboard/js/dashboard.js"></script>
+
+{% endblock content %}

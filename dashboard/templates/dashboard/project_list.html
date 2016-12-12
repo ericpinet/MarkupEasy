@@ -4,22 +4,21 @@
 
 <div class="panel panel-default">
 
-    <div class="panel-heading">
+    <div class="panel-heading lead-small">
         <div class="btn-group pull-right">
-            <button id="btn-add" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="right" title="Add"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            <button id="btn-add" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="right" title="Add new project"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
         Projects
     </div>
 
     <div class="panel-body">
-        <table id="project-table" class="table">
+        <table id="project-table" class="table borderless">
         {% for project in projects %}
             <tr id="{{ project.id }}">
                 <td>
-                    <a href="/dashboard/{{ project.id }}/" id="btn-open-{{ project.id }}" class="lead-small" data-toggle="tooltip" data-placement="right" title="Open project"><i class="fa fa-book" aria-hidden="true"></i> {{ project.name }}</a>
-
+                    <i class="fa fa-book" aria-hidden="true"></i>&nbsp;<a href="/dashboard/{{request.user.username}}/{{ project.id }}/" id="btn-open-{{ project.id }}" class="lead" data-toggle="tooltip" data-placement="right" title="Open project">{{ project.name }}</a>
                     <div class="lead-small">Created: {{ project.creation_date }}</div>
-                    <div class="lead-small">File quantity: {{ project.file_set.count }}</div>
+                    <div class="lead-small">File quantity: {{ project.get_files_count }}</div>
 
                 </td>
 
@@ -35,7 +34,7 @@
         </table>
     </div>
 
-    <div class="panel-footer"><div align="right">{{ projects.count }} project(s)</div></div>
+    <div class="panel-footer"><div align="right" class="lead-small">{{ projects.count }} project(s)</div></div>
 
 </div>
 

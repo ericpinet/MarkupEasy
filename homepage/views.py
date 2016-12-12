@@ -25,7 +25,7 @@ def index(request):
 
     if home_page != 'True':
         if request.user.is_authenticated:
-            return redirect('%s' % settings.LOGGED_URL)
+            return redirect('%s%s' % (settings.LOGGED_URL, request.user.username))
 
     template = loader.get_template('homepage/index.html')
     context = {
@@ -82,7 +82,7 @@ def join(request):
             user.save()
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('%s' % settings.LOGGED_URL)
+            return redirect('%s%s' % (settings.LOGGED_URL, request.user.username))
 
     template = loader.get_template('homepage/index.html')
     context = {
@@ -125,7 +125,7 @@ def sign_in(request):
                 login_error = 'Invalid username or password!'
             else:
                 login(request, user)
-                return redirect('%s' % settings.LOGGED_URL)
+                return redirect('%s%s' % (settings.LOGGED_URL, request.user.username))
 
     template = loader.get_template('homepage/index.html')
     context = {
