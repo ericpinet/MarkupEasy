@@ -1,13 +1,18 @@
 from django.http import HttpResponse
 from django.template import loader
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.contrib.auth.models import User
 
+from markupeasy import settings
 from api.models import Project
-from api.models import File
-
 
 @login_required(login_url='/sign_in')
 def dashboard(request):
+    return redirect('%s%s' % (settings.LOGGED_URL, request.user.username))
+
+@login_required(login_url='/sign_in')
+def user_dashboard(request, username):
     """
     Main page of project management
 
@@ -15,47 +20,59 @@ def dashboard(request):
     :return: Page of the project management for the user connected
     """
     # get project list
-    projects = Project.objects.filter(user=request.user)
+    try:
+        user = User.objects.get(username__iexact=username)
+        projects = Project.objects.filter(user=user)
 
-    # location
-    projects_page = get_param(request, 'projects_page')
-    if projects_page == 'add':
-        projects_page = "dashboard/projects_add.html"
-    elif projects.count() == 0:
-        projects_page = "dashboard/projects_empty.html"
-    else:
-        projects_page = "dashboard/projects_list.html"
+        # location
+        project_page = get_param(request, 'project_page')
+        if project_page == 'add':
+            project_page = "dashboard/project_add.html"
+        elif projects.count() == 0:
+            project_page = "dashboard/project_empty.html"
+        else:
+            project_page = "dashboard/project_list.html"
 
-    # load template with context
-    template = loader.get_template('dashboard/dashboard.html')
-    context = {
-        'projects': projects,
-        'projects_page': projects_page
-    }
-    return HttpResponse(template.render(context, request))
+        # load template with context
+        template = loader.get_template('dashboard/dashboard.html')
+        context = {
+            'open_user': user,
+            'projects': projects,
+            'project_page': project_page
+        }
+        return HttpResponse(template.render(context, request))
+
+    except User.DoesNotExist:
+        template = loader.get_template('dashboard/404.html')
+        context = {
+            'username': username
+        }
+        return HttpResponse(template.render(context, request))
 
 
 @login_required(login_url='/sign_in')
-def project_details(request, project_id):
+def project(request, username, project_id):
     """
-    Project details page
+    Project open page
 
+    :param username: username owner of the project
     :param request: Client HTTP request
     :param project_id: Project Id
     :return: Page of the project details
     """
     # get project and files
     project = Project.objects.get(pk=project_id)
-    files = File.objects.filter(project_id=project.id)
 
-    project_page = "dashboard/projects_details.html"
+    # get all files in projects
+    files = project.get_files()
 
     # load template with context
-    template = loader.get_template('dashboard/dashboard.html')
+    template = loader.get_template('dashboard/project.html')
     context = {
         'project': project,
-        'projects_page': project_page,
-        'files': files
+        'files': files,
+        'username': username,
+        'user_url': '%s%s' % (settings.LOGGED_URL, username)
     }
     return HttpResponse(template.render(context, request))
 

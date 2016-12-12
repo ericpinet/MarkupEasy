@@ -3,10 +3,7 @@
 
 <div class="panel panel-default">
 
-    <div class="panel-heading">
-        <div class="btn-group pull-right">
-            <button id="btn-close" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="right" title="Close"><i class="fa fa-close" aria-hidden="true"></i></button>
-        </div>
+    <div class="panel-heading lead-small">
         {{ project.name }}
     </div>
 
@@ -32,7 +29,7 @@
 
             <tfoot>
                 <tr>
-                    <td>{{ files.count }} file(s)</td>
+                    <td>{{ files|length }} file(s)</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -41,19 +38,19 @@
 
 
             {% for file in files %}
-            <tr id="{{ file.id }}">
+            <tr id="{{ file.name }}">
                 <td>
-                    <a href="/editor/{{ project.id }}/{{ file.id }}" target="_blank">{{ file.name }}</a>
+                    <a href="/editor/{{ project.id }}/{{ file.name }}/" target="_blank">{{ file.name }}</a>
                 </td>
                 <td>
-                    {{ file.file.size | human_readable_size }}
+                    {{ file.size | human_readable_size }}
                 </td>
                 <td>
-                    N/A
+                    {{ file.modified }}
                 </td>
                 <td>
-                    <a href="/editor/{{ project.id }}/{{ file.id }}" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    <a class="btn-delete" href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    <a href="/editor/{{ project.id }}/{{ file.name }}/" target="_blank" data-toggle="tooltip" data-placement="right" title="Edit file"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <a class="btn-delete" href="#" data-toggle="tooltip" data-placement="right" title="Delete file"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
             {% endfor %}

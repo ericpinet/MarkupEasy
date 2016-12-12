@@ -3,7 +3,7 @@
 
 <script type="text/javascript" src="{{ STATIC_URL }}/static/js/jquery-3.1.1.js"></script>
 <link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}/static/css/font-awesome.css' />
-<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}/static/css/homepage.css' />
+
 
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
@@ -11,6 +11,8 @@
 
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
+
+<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}/static/css/homepage.css' />
 
 {% load gravatar %}
 
@@ -35,38 +37,6 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                {% if editor_project is not None and editor_files is None %}
-
-                    <ul class="nav navbar-nav navbar-center">
-                        <li>
-                            <a href="/editor/{{ editor_project.id }}">{{ editor_project.name }}</a>
-                        </li>
-                    </ul>
-
-                {% endif %}
-
-                {% if editor_project is not None and editor_files is not None %}
-
-                    <ul class="nav navbar-nav navbar-center">
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-book" aria-hidden="true"></i> {{ editor_project.name }} <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-
-                                {% for file in editor_files %}
-
-                                    <li><a href="/editor/{{ editor_project.id }}/{{ file.id }}"> <i class="fa fa-file-code-o" aria-hidden="true"></i> {{ file.name }}</a></li>
-
-                                {% endfor %}
-
-                                <li><a href="/dashboard"> <i class="fa fa-times" aria-hidden="true"></i> Close</a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
-
-                {% endif %}
 
                 <ul class="nav navbar-nav navbar-right">
 
