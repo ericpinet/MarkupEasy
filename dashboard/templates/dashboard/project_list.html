@@ -16,7 +16,7 @@
         {% for project in projects %}
             <tr id="{{ project.id }}">
                 <td>
-                    <i class="fa fa-book" aria-hidden="true"></i>&nbsp;<a href="/dashboard/{{request.user.username}}/{{ project.id }}/" id="btn-open-{{ project.id }}" class="lead" data-toggle="tooltip" data-placement="right" title="Open project">{{ project.name }}</a>
+                    <i class="fa fa-book" aria-hidden="true"></i>&nbsp;<a href="/dashboard/{{open_user.username}}/{{ project.id }}/" id="btn-open-{{ project.id }}" class="lead" data-toggle="tooltip" data-placement="right" title="Open project">{{ project.name }}</a>
                     <div class="lead-small">Created: {{ project.creation_date }}</div>
                     <div class="lead-small">File quantity: {{ project.get_files_count }}</div>
 
