@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 from markupeasy import settings
 from api.models import Project
+from api.models import ProjectFile
 
 @login_required(login_url='/sign_in')
 def dashboard(request):
@@ -71,6 +72,40 @@ def project(request, username, project_id):
     context = {
         'project': project,
         'files': files,
+        'username': username,
+        'user_url': '%s%s' % (settings.LOGGED_URL, username)
+    }
+    return HttpResponse(template.render(context, request))
+
+
+@login_required(login_url='/sign_in')
+def project_editor(request, username, project_id, file_name):
+    """
+    Project file open
+
+    :param username: username owner of the project
+    :param request: Client HTTP request
+    :param project_id: Project Id
+    :param file_name: File name to open in editor
+    :return: Page of the project file editor
+    """
+    # get project and files
+    project = Project.objects.get(pk=project_id)
+
+    # get all files in projects
+    files = project.get_files()
+
+    it = iter(files)
+    for file in it:
+        if file.name == file_name:
+            file_content = file.get_content()
+
+    # load template with context
+    template = loader.get_template('dashboard/project.html')
+    context = {
+        'project': project,
+        'file_name': file_name,
+        'file_content': file_content,
         'username': username,
         'user_url': '%s%s' % (settings.LOGGED_URL, username)
     }

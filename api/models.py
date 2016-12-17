@@ -77,3 +77,14 @@ class ProjectFile:
         self.created = time.strftime("%Y/%m/%d %H:%M:%S", time.localtime(stat.st_birthtime))
         self.modified = time.strftime("%Y/%m/%d %H:%M:%S", time.localtime(stat.st_mtime))
         self.is_directory = stat.__class__
+
+    def get_content(self):
+        """
+        Return file content
+        :return: File content
+        """
+        with open(self.path + '/' + self.name, 'r') as content_file:
+            content = content_file.read()
+
+        return content
+
