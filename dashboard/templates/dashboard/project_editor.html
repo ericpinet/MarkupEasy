@@ -1,0 +1,35 @@
+
+<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}/static/dashboard/css/project_editor.css' />
+<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}/static/dashboard/css/bootstrap-markdown.min.css' />
+<script type="text/javascript" src="{{ STATIC_URL }}/static/dashboard/js/bootstrap-markdown.js"></script>
+
+
+{% load filters %}
+
+<div class="panel panel-default">
+
+    <div class="panel-heading lead-small">
+        {{ project.name }} / {{ file_name }} <button id="btn-rename-file" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="right" title="Rename file"><i class="fa fa-plus" aria-hidden="true"></i> Rename</button>
+    </div>
+
+    <div class="panel-body" id="editor">
+
+        <form>
+            <textarea name="content" data-provide="markdown" rows="30">{{ file_content }}</textarea>
+        </form>
+
+    </div>
+
+    <div class="panel-footer">
+
+        <button id="btn-save-file" class="btn btn-default btn-sm btn-success" data-toggle="tooltip" data-placement="right" title="Save file"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+        <a href="/dashboard/{{request.user.username}}/{{ project.id }}"><button id="btn-cancel-edit-file" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="right" title="Cancel"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button></a>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="{{ STATIC_URL }}/static/dashboard/js/marked.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}/static/dashboard/js/project_editor.js"></script>
+
+
