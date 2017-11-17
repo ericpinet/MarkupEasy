@@ -15,3 +15,15 @@ script:
 
 after_success:
     # notting
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: AKIAIAZNBDR7JEAUTLSA
+  secret_access_key:
+    secure: "TrsZz/DoLmU0nlgxsqX9/0pml6vrwcl7mvkBeYCzPlrMu9AJp63vGQeLLTHv5pJXkBdxUTlCRyAzCVdUOx4KtILLPcELhkHZY6ZInkRKpfgtXA3n5zWAew4uUfMfq76qX+W9AaYMxu0phqLWDnCA4JOinl15XS4HeTPpy3xU3Bvcxv6lmgpyXpf5xwnbdwQD8AF4SgLylNo1HyTwVw0TS3SnbGH7lI0qDA1Wm6TmpCy0/Sy5DIjuF5ppch5vndHaZpYLoEmNGr92364eY3pb8Po/AOyA1T0R4sgw9x5jNAzz+54hoYTSDqlsJwLLGfSYAig0qrCZwXsOMBmR2zIGMZzM0cI8lo4kWX9HGpJj/eTYvYjC+VZpLCzool8+ETnSlttuDwwzHz0vOXburIvoXKuh9I6yagK2gU09HTIgTTeqNYJZzOtg2kbDToeE3EwtT0oZH1YSYvCMdqllG9mBb6GwvOuOk2DO3cWl5VmV/5dRUCRrQ2NvFwsRUqXwrNRnZdOtOfybc0Dx4tfekMNMsmdpYyragDjiYiJtAOZY/Ci6nv4yqWiV+D+Ld97vcuPvsIO/fgKsrtuon9MlqRx7d0g7qYK6dlewjVrxU/7ytIiYQI5SmmNoRInEajEghmbq58HhSISAQ8ukmNDQr6SyCVvN0rMixBZz1r9yZS0/mA4="
+  region: "ca-central-1"
+  app: "markupeasy"
+  env: "django-env"
+  bucket_name: "elasticbeanstalk-ca-central-1-449845188168"
+  on:
+      branch: master
